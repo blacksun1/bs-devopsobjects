@@ -1,0 +1,30 @@
+.rake_test_cache
+
+# Test Kitchen
+.kitchen/
+.kitchen.local.yml
+
+# Ignore the modules
+modules/
+
+# Vagrant
+.vagrant
+tmp/
+
+# Librarian Puppet
+.librarian
+Puppetfile.lock
+
+# Bundler
+Gemfile.lock
+bin/*
+.bundle/*
+
+# OS generated files
+.DS_STORE
+.DS_STORE?
+._*
+.Spotlight-v100
+.Trashes
+ehthumbs.db
+Thumbs.db

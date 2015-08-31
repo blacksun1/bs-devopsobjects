@@ -1,2 +1,3 @@
 # bs-devopsobjects
-Various objects created for devops projects
+
+Various objects created for DevOps projects

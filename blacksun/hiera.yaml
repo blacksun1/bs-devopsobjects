@@ -1,0 +1,23 @@
+---
+:backends:
+	- eyaml
+	- yaml
+:yaml:
+	:datadir: /var/lib/hiera
+:eyaml:
+	:datadir: /var/lib/hiera
+	:extension: 'yaml'
+	# :pkcs7_private_key:
+	# :pkcs7_public_key:
+:hierachy:
+	- "nodes/%{hostname}"
+	- "%{::environment}/roles/%{role_name1}"
+	- "%{::environment}/roles/%{role_name2}"
+	- "%{::environment}/roles/%{role_name3}"
+	- "%{::environment}/roles/%{role_name4}"
+	- "%{::environment}/common"
+	- "roles/%{role_name1}"
+	- "roles/%{role_name2}"
+	- "roles/%{role_name3}"
+	- "roles/%{role_name4}"
+	- common

@@ -1,0 +1,34 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Description": "Build the backsun.cx server",
+  "Resources": {
+    "blacksun1": {
+      "Properties": {
+        "InstanceType": "t2.micro",
+        "ImageId": "ami-e4ff5c93",
+        "KeyName": "blacksun-devops",
+        "SecurityGroupIds": [
+          "sg-12dc6f77",
+          "sg-b9c332dd"
+        ],
+        "Tags": [
+          {
+            "Key": "Name",
+            "Value": "blacksun1"
+          }
+        ],
+        "UserData": {
+          "Fn::Base64": {
+            "Fn::Join": [
+              "",
+              [
+                "#cloud-config\ntimezone: Europe/London\nwrite_files:\n  - path: /etc/motd\n    permissions: 0644\n    owner: root\n    encoding: base64\n    content: |\n      R29vZCBuZXdzLCBldmVyeW9uZSwKY2xvdWQtY29uZmlnIGhhcyB3b3JrZWQhCg==\nsystem_info:\n  default_user:\n    name: blacksun1\n"
+              ]
+            ]
+          }
+        }
+      },
+      "Type": "AWS::EC2::Instance"
+    }
+  }
+}

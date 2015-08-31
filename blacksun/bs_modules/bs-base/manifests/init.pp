@@ -29,13 +29,27 @@
 #
 # === Authors
 #
-# Author Name <author@domain.com>
+# Simon Bruce <simon@blacksun.cx>
 #
 # === Copyright
 #
-# Copyright 2015 Your name here, unless otherwise noted.
+# Copyright 2015 Simon Bruce, unless otherwise noted.
 #
 class base {
 
+	package { 'man-db':
+		ensure => installed,
+	}
+
+	package { 'vim':
+		ensure => installed,
+	}
+
+	file { 'standardprompt.sh':
+		path   => '/etc/profile.d/standardprompt.sh',
+		ensure => 'present',
+		source => 'puppet:///modules/bs-base/standardprompt.sh',
+		mode   => 755,
+	}
 
 }
