@@ -1,4 +1,4 @@
-# == Class: base
+# == Class: bs_base
 #
 # Full description of class base here.
 #
@@ -23,7 +23,7 @@
 #
 # === Examples
 #
-#  class { 'base':
+#  class { 'bs_base':
 #    servers => [ 'pool.ntp.org', 'ntp.local.company.com' ],
 #  }
 #
@@ -35,21 +35,21 @@
 #
 # Copyright 2015 Simon Bruce, unless otherwise noted.
 #
-class base {
+class bs_base (
+)
+{
 
-	package { 'man-db':
-		ensure => installed,
-	}
+  package { 'man-db':
+    ensure => installed,
+  }~>
 
-	package { 'vim':
-		ensure => installed,
-	}
+  file { 'standardprompt.sh':
+    path   => '/etc/profile.d/standardprompt.sh',
+    ensure => 'present',
+    source => 'puppet:///modules/bs_base/standardprompt.sh',
+    mode   => 755,
+  }~>
 
-	file { 'standardprompt.sh':
-		path   => '/etc/profile.d/standardprompt.sh',
-		ensure => 'present',
-		source => 'puppet:///modules/bs-base/standardprompt.sh',
-		mode   => 755,
-	}
+  class{ 'vim': }
 
 }

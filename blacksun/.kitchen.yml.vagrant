@@ -1,0 +1,16 @@
+---
+driver:
+  name: vagrant
+
+provisioner:
+  name: puppet_apply
+  manifests_path: manifests
+  modules_path: bs_modules
+  hiera_data_path: hieradata
+  require_puppet_collections: false
+  require_puppet_repo: true
+  require_chef_for_busser: false
+  puppet_debug: true
+  puppet_verbose: true
+  librarian_puppet_ssl_file: /Users/bruces/.ssh
+  puppet_environment: vagrant
